@@ -14,8 +14,7 @@
             <?php echo URL::site('/', TRUE) ?>hashed/<?php echo $url->hashed ?>
         </a>
 
-        <div class="spacer"></div>
-        <div class="spacer"></div>
+        <br/><br/>
 
         <a href='<?php echo URL::site('/') ?>'>Do another?</a>
 
