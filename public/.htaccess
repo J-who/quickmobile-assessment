@@ -1,0 +1,28 @@
+# Turn on URL rewriting
+RewriteEngine On
+Options -MultiViews
+# Installation directory
+RewriteBase /
+
+# Protect hidden files from being viewed
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+SetEnv KOHANA_ENV DEVELOPMENT
+
+
+# Protect application and system files from being viewed
+RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Required for dreamhost
+RewriteCond $1 !^(index\.php|public|user_guide|robots\.txt)
+
+RewriteRule .* index.php?$0 [PT,L,QSA]
+
+
