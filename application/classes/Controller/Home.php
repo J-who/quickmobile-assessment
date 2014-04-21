@@ -20,7 +20,8 @@ class Controller_Home extends Controller_Site_Template
     {
         if (HTTP_Request::POST == $this->request->method()) {
             $post = Validation::factory($_POST);
-            $post->rule('url', 'url');
+
+            // TODO - make sure URL is valid
 
             // Make sure URL has been set!
             if (!isset($post['url'])) {
@@ -29,7 +30,6 @@ class Controller_Home extends Controller_Site_Template
             }
 
             $url = $post['url'];
-
             // Remove http:// if user is sneaky!
             if (strpos($url, 'http://') !== false) {
                 $url = substr($url, 7);
@@ -37,9 +37,6 @@ class Controller_Home extends Controller_Site_Template
 
             if ($post->check()) {
                 $this->redirect("hash/$url");
-            } else {
-                Message::error('Bad URL');
-                $this->redirect('/');
             }
         }
         $this->redirect('/');
