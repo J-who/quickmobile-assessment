@@ -1,0 +1,6 @@
+.idea
+.AppleDouble
+.DS_Store
+application/logs
+._*
+*.log

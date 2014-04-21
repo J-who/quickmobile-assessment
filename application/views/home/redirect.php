@@ -1,6 +1,6 @@
 <?php echo (isset($message)) ? $message : ''; ?>
 
-<meta http-equiv="refresh" content="3; url=http://<?php echo $url->url?>" />
+<meta http-equiv="refresh" content="3; url=http://<?php echo $model->url?>" />
 
 
 <div class="row">
@@ -9,7 +9,7 @@
         <h3>URL Shortener</h3>
         <br/>
 
-        Redirecting you to http://<?php echo $url->url?> in 3 seconds!
+        Redirecting you to http://<?php echo $model->url?> in 3 seconds!
 
     </div>
 </div>

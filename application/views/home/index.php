@@ -4,7 +4,12 @@
     <div class="col-xs-4">
         <h3>URL Shortener</h3>
         <br/>
-        You may also use <?php echo URL::site('/', TRUE);?>hash/YOUR URL HERE
+        API: <?php echo URL::site('/', TRUE);?>hash/YOUR URL HERE
+        <br/>
+        <strong>Example:</strong> <?php echo URL::site('/', TRUE);?>hash/quickmobile.com
+        <br/>
+        <br/>
+        or use the beautiful form below
         <div class="spacer"></div>
         <div class="spacer"></div>
 

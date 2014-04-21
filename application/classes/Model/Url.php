@@ -1,5 +1,4 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
-// Not being used. Here for examples
 
 class Model_Url extends ORM
 {
@@ -7,34 +6,23 @@ class Model_Url extends ORM
     //protected $_sorting = array('project_order' => 'asc');
 
 
-
-
-
-    public function filters()
-    {
-    }
-
-
+    /**
+     * Hashing a URL
+     *
+     * @param $url
+     * @return ORM
+     */
     public function hashURL($url)
     {
-        $model = $this->getURL($url);
 
         // Check to see if someone already hashed the URL
+        $model = $this->getURL($url);
         if ($model->loaded()) return $model;
 
         // Lets hash this URL
-
         $hashed = URL::title(Text::random());
 
-        /*
-        $hashed = "";
-        $character_set = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        for ($i = 1; $i <= 6; $i++) {
-            $hashed .= $character_set[rand(0, strlen($character_set) - 1)];
-        }
-        */
-
+        // Make sure it doesn't exist already
         if ($this->getHashed($hashed)->loaded()) {
             $this->hashURL($url);
         }
@@ -48,12 +36,23 @@ class Model_Url extends ORM
 
     }
 
-
+    /**
+     * Loading in the model via URL
+     *
+     * @param $url
+     * @return ORM
+     */
     public function getURL($url)
     {
         return $this->where('url', '=', $url)->find();
     }
 
+    /**
+     * Loading in the model via hashed URL
+     *
+     * @param $hashed
+     * @return ORM
+     */
     public function getHashed($hashed)
     {
         return $this->where('hashed', '=', $hashed)->find();
